@@ -1,0 +1,62 @@
+---
+description: Standards for managing commit messages in AI coding workflow
+globs: ai-coding/**/*.md
+alwaysApply: false
+---
+# AI Coding Commit Workflow
+
+This rule defines the workflow for managing commit messages in the AI coding process, ensuring consistency and efficiency in commit message management.
+
+<rule>
+name: ai_coding_commit_workflow
+description: Standards for managing commit messages in AI coding workflow
+filters:
+  - type: file_extension
+    pattern: "\\.md$"
+  - type: content
+    pattern: "5-.*\\.md$"
+
+actions:
+  - type: suggest
+    message: |
+      When working with commit messages in AI coding:
+
+      1. **Commit Message Format**:
+         - Follow the format from `rules-git.mdc`
+         - Include ticket number and description
+         - Use conventional commit types
+         - Keep messages clear and descriptive
+
+      2. **Stage-Based Commits**:
+         - Each Stage should result in one logical commit
+         - Include both implementation and documentation changes
+         - Reference the Stage number in the commit message
+         - Update all relevant documentation before committing
+
+      3. **Tracking Progress**:
+         - Use `git log --oneline` to review commit history
+         - Use `git show` to view specific commit details
+         - Use git's built-in history instead of maintaining separate files
+         - Keep commit messages well-structured for easy review
+
+      4. **File Organization**:
+         ```
+         ai-coding/TICKET-description/
+         └── 4-TICKET-staged-implementation-checklist.md  # Implementation stages
+         ```
+
+examples:
+  - input: |
+      feat(scope): implement feature X for Stage 2
+
+      - Add new functionality
+      - Update documentation
+      - Add tests
+
+      TICKET-123 Feature Description
+    output: "Correctly formatted commit message"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

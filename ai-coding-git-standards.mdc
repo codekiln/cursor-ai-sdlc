@@ -1,0 +1,128 @@
+---
+description: Git commit standards and workflow rules
+globs: 
+alwaysApply: false
+---
+# Git Workflow Rules
+
+This rule defines standards for git operations, commit messages, and workflow practices.
+
+<rule>
+name: git_workflow_standards
+description: Enforces git workflow standards including conventional commits and ticket references
+
+filters:
+  - type: event
+    pattern: "git_commit"
+  - type: content
+    pattern: "^(feat|fix|docs|style|refactor|test|chore)(\\(.*\\))?!?: .+"
+
+actions:
+  - type: enforce
+    message: |
+      Git commits must follow these rules:
+
+      1. **Conventional Commits Format**:
+         ```
+         type(scope): subject
+         
+         [optional body]
+         
+         [optional footer]
+         
+         [ticket reference]
+         ```
+         
+         Where:
+         - type: feat|fix|docs|style|refactor|test|chore
+         - scope: optional, in parentheses
+         - subject: imperative, present tense
+         - ticket reference: TICKET-NUMBER TICKET-DESCRIPTION 
+           - at bottom (note, TICKET is from [CURRENT_TICKET.yaml](mdc:ai-coding/CURRENT_TICKET.yaml))
+
+      2. **Git Operations**:
+         ```bash
+         # Do targeted adds (no git add .)
+         git add path/to/specific/file
+         
+         # Commit with conventional format
+         git commit -m "type(scope): subject" -m "body" -m "TICKET-NUMBER"
+         ```
+
+      3. **Never Use**:
+         - git add .
+         - Interactive commands (log, rebase -i)
+         - Commands that use pager
+
+examples:
+  - input: |
+      # Bad
+      git add .
+      git commit -m "updated code"
+      
+      # Good
+      git add src/feature.py
+      git commit -m "feat(auth): implement JWT validation" -m "Adds JWT token validation to auth middleware" -m "PD-12345"
+    output: "Correctly formatted git commit"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>
+
+## Commit Message Structure
+
+### Type
+Must be one of:
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc)
+- `refactor`: Code changes that neither fix bugs nor add features
+- `test`: Adding or modifying tests
+- `chore`: Maintenance tasks
+
+### Scope (Optional)
+- Should be a noun describing the section of the codebase
+- Examples: (auth), (api), (ui), (db)
+
+### Subject
+- Use imperative, present tense: "add" not "added" or "adds"
+- Don't capitalize first letter
+- No period at the end
+
+### Body (Optional)
+- Use imperative, present tense
+- Include motivation for change and contrasts with previous behavior
+
+### Footer
+- BREAKING CHANGE: note if there are breaking changes
+- Ticket reference MUST be on the last line
+
+## Examples
+
+<EXAMPLE name="Feature with scope">
+feat(auth): implement OAuth2 flow
+
+Adds OAuth2 authentication flow using Google provider
+- Implements login endpoint
+- Adds token validation
+- Sets up user session
+
+PD-12345 FeatureDescription Here
+</EXAMPLE>
+
+<EXAMPLE name="Bug fix">
+fix: resolve memory leak in worker pool
+
+Worker connections weren't being properly closed
+after task completion
+
+PD-67890 Ticket Description Here
+</EXAMPLE>
+
+<EXAMPLE name="Documentation">
+docs: update API authentication guide
+
+PD-11111 Ticket Description Here
+</EXAMPLE>

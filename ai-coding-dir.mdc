@@ -1,0 +1,68 @@
+---
+description: ai-coding directory and Phased SDLC
+globs: ai-coding/**/*
+alwaysApply: false
+---
+# AI Coding technique - Using an `ai-coding` dir for staging SDLC planning artifacts by Phase
+
+## High-Level Summary of `ai-coding/` directory
+- contains a `.gitignore` with `**/*-repo-context.txt` added to it
+- ### Summary of `ai-coding/CURRENT_TICKET.yaml`
+  - [CURRENT_TICKET.yaml](mdc:ai-coding/CURRENT_TICKET.yaml) - contains current info
+    - `current-ticket-directory`
+    - `current-ticket`
+    - `current-ticket-phase`
+    - `current-ticket-step`
+    - `current-ticket-ticketing-system-cli-executable`
+
+## Summary of the `ai-coding/TICKET-feature-name/` directory
+- Named after the ticket and a brief description of the feature
+- Contains all planning and documentation assets for a single feature's implementation
+- Example directory structure:
+  ```
+  /ai-coding/TICKET-description/
+  ├── 1-TICKET-original-issue.md
+  ├── 1-TICKET-repomix.config.json
+  ├── 2-TICKET-technical-specification.md
+  ├── 3-TICKET-staged-implementation-plan.md
+  ├── 4-TICKET-staged-implementation-checklist.md
+  ├── 5-TICKET-qa-todo.md
+  ├── 6-TICKET-qa-summary.md
+  ├── 7-TICKET-mr-summary.md
+  └── 8-TICKET-mr-handoff.md
+  ```
+
+## Phases and their Intermediate Packets
+1. **Gather Materials**
+   - `1-TICKET-original-issue.md` - Original ticket details
+   - `1-TICKET-repomix.config.json` - Repository context configuration
+
+2. **Requirements Interview**
+   - `2-TICKET-technical-specification.md` - Detailed technical requirements
+
+3. **Implementation Plan**
+   - `3-TICKET-staged-implementation-plan.md` - Step-by-step implementation guide
+
+4. **Implementation Checklist**
+   - `4-TICKET-staged-implementation-checklist.md` - Granular task checklist
+
+5. **Implementation**
+   - Use git history to track implementation progress
+   - `5-TICKET-qa-todo.md` - QA checklist for later verification
+
+6. **Verification**
+   - `6-TICKET-qa-summary.md` - QA results and findings
+
+7. **Documentation**
+   - Update repository documentation as needed
+
+8. **Submission**
+   - `7-TICKET-mr-summary.md` - Merge request description
+   - `8-TICKET-mr-handoff.md` - Post-review summary
+
+## About the `<STAGE_NUM>-<TICKET_REF>-` prefix
+- **STAGE_NUM** - Files sorted by chronological usage
+- **TICKET_REF** - Unique identification in Cursor
+
+## See also
+- [[Person/Harper Reed/Blog/25/02/My LLM codegen workflow atm]]

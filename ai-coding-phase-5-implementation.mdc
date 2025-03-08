@@ -1,0 +1,84 @@
+---
+description: Standards for Phase 5 Implementation in AI coding workflow
+globs: ai-coding/**/4-*.md,ai-coding/**/5-*.md
+alwaysApply: false
+---
+# AI Coding Phase 5 - Implementation
+
+This rule defines the standards and workflow for Phase 5 Implementation in the AI coding process, ensuring consistent and verifiable progress through implementation stages.
+
+<rule>
+name: ai_coding_phase_5_implementation
+description: Standards for Phase 5 Implementation in AI coding workflow
+filters:
+  - type: file_extension
+    pattern: "\\.md$"
+  - type: content
+    pattern: "[45]-.*\\.md$"
+
+actions:
+  - type: suggest
+    message: |
+      When implementing features in Phase 5:
+
+      1. **Stage-Based Implementation**:
+         - Each Stage in `4-TICKET-staged-implementation-checklist.md` represents a single logical commit
+         - Work through each Stage sequentially, checking off items as they are completed
+         - Each Stage should build on previous work and be independently verifiable
+         - Before committing:
+           - Verify all checklist items for the current stage are complete
+           - Update the checklist to mark completed items with [x]
+           - Add any relevant notes or clarifications to checklist items
+           - Ensure checklist updates reflect the actual code changes
+
+      2. **Commit Management**:
+         - Follow the commit workflow defined in `ai-coding-commit-workflow.mdc`
+         - Follow the commit message format defined in `rules-git.mdc`
+         - Each Stage should result in exactly one logical commit
+         - Include both implementation changes AND checklist updates in the same commit
+         - Use git's built-in history for tracking progress (`git log`, `git show`)
+         - Keep commit messages clear and descriptive for easy review
+
+      3. **QA Tracking**:
+         - For each Stage, identify components that will need testing later
+         - Add these to `5-TICKET-qa-todo.md` organized by Stage
+         - Include both automated and manual testing requirements
+         - Note any specific test cases or scenarios to verify
+
+      4. **Progress Tracking**:
+         - Update `ai-coding/CURRENT_TICKET.yaml` to reflect:
+           - Current phase (5)
+           - Current Stage number
+           - Current Step within the Stage (if applicable)
+         - Keep this file in sync with actual progress
+
+      5. **Verification**:
+         - At the end of each Stage:
+           - Verify all checklist items are complete
+           - Ensure code changes are properly committed
+           - Update all tracking files
+           - RetrieverDocument any issues or concerns in QA todo list
+           - Double-check that checklist updates are included in the commit
+
+      6. **File Organization**:
+         ```
+         ai-coding/TICKET-description/
+         ├── 4-TICKET-staged-implementation-checklist.md  # Implementation stages
+         └── 5-TICKET-qa-todo.md                         # Testing requirements
+         ```
+
+examples:
+  - input: |
+      ## Stage 1: Set Up Directory and File Structure
+
+      - [x] **Use Existing Directory Structure**
+        - [x] Verify existing directory
+        - [x] Create/update files
+      - [x] **Git Commit**
+        - [x] Commit with: `feat: implement initial structure`
+    output: "Correctly completed stage with proper tracking"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

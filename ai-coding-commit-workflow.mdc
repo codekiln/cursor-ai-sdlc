@@ -1,21 +1,15 @@
 ---
 description: Standards for managing commit messages in AI coding workflow
-globs: ai-coding/**/*.md
+globs: 
 alwaysApply: false
 ---
 # AI Coding Commit Workflow
 
-This rule defines the workflow for managing commit messages in the AI coding process, ensuring consistency and efficiency in commit message management.
+This rule defines the workflow for managing commit messages in the AI coding process.
 
 <rule>
 name: ai_coding_commit_workflow
 description: Standards for managing commit messages in AI coding workflow
-filters:
-  - type: file_extension
-    pattern: "\\.md$"
-  - type: content
-    pattern: "5-.*\\.md$"
-
 actions:
   - type: suggest
     message: |

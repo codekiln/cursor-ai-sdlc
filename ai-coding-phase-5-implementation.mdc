@@ -1,6 +1,6 @@
 ---
 description: Standards for Phase 5 Implementation in AI coding workflow
-globs: ai-coding/**/4-*.md,ai-coding/**/5-*.md
+globs: 
 alwaysApply: false
 ---
 # AI Coding Phase 5 - Implementation

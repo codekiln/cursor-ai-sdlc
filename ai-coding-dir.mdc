@@ -1,6 +1,6 @@
 ---
 description: ai-coding directory and Phased SDLC
-globs: ai-coding/**/*
+globs: 
 alwaysApply: false
 ---
 # AI Coding technique - Using an `ai-coding` dir for staging SDLC planning artifacts by Phase

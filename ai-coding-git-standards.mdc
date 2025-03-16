@@ -62,7 +62,7 @@ examples:
       
       # Good
       git add src/feature.py
-      git commit -m "feat(auth): implement JWT validation" -m "Adds JWT token validation to auth middleware" -m "PD-12345"
+      git commit -m "feat(auth): implement JWT validation" -m "Adds JWT token validation to auth middleware" -m "PD-12345 My Ticket Description"
     output: "Correctly formatted git commit"
 
 metadata:
@@ -97,7 +97,7 @@ Must be one of:
 
 ### Footer
 - BREAKING CHANGE: note if there are breaking changes
-- Ticket reference MUST be on the last line
+- Ticket reference MUST be on the last line WITH DESCRIPTION OF TICKET
 
 ## Examples
 

@@ -63,6 +63,7 @@ actions:
       6. **File Organization**:
          ```
          ai-coding/TICKET-description/
+         ├── 3-TICKET-staged-implementation-plan # plan for each stage
          ├── 4-TICKET-staged-implementation-checklist.md  # Implementation stages
          └── 5-TICKET-qa-todo.md                         # Testing requirements
          ```
